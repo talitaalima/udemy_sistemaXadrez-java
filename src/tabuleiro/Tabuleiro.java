@@ -8,7 +8,7 @@ public class Tabuleiro {
 	
 	public Tabuleiro(int linhas, int colunas) {
 		if (linhas < 1 || colunas < 1) {
-			throw new TabuleiroExcecao("Erro ao criar o tabuleiro: É necessário pelo menos uma linha e 1 coluna");
+			throw new TabuleiroExcecao("Erro ao criar o tabuleiro: E necessario pelo menos uma linha e 1 coluna");
 		}
 		this.linhas = linhas;
 		this.colunas = colunas;
@@ -39,7 +39,7 @@ public class Tabuleiro {
 	
 	public void localPeca(Peca peca, Posicao posicao) {
 		if (existePeca(posicao)) {
-			throw new TabuleiroExcecao("Já existe uma peça nessa posicao " + posicao);
+			throw new TabuleiroExcecao("Ja existe uma peca nessa posicao " + posicao);
 		}
 		pecas[posicao.getLinha()][posicao.getColuna()]= peca;
 		peca.posicao = posicao;

@@ -42,7 +42,7 @@ public class PartidaXadrez {
 	
 	private void validarOrigemPosicao(Posicao posicao) {
 		if (!tabuleiro.existePeca(posicao)) {
-			throw new XadrezExcecao("Não existe peça na posição de origem");
+			throw new XadrezExcecao("Nao existe peca na posicao de origem");
 		}
 		
 	}
