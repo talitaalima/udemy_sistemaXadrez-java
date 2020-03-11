@@ -1,5 +1,7 @@
 package xadrez;
 
+import javax.transaction.xa.XAException;
+
 import tabuleiro.Peca;
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
@@ -44,7 +46,9 @@ public class PartidaXadrez {
 		if (!tabuleiro.existePeca(posicao)) {
 			throw new XadrezExcecao("Nao existe peca na posicao de origem");
 		}
-		
+		if (!tabuleiro.peca(posicao).existeMovimentoPossivel()) {
+			throw new XadrezExcecao("Nao ha movimentos possiveis para a peca escolhida");
+		}
 	}
 	
 	private void localNovaPeca(char coluna, int linha, XadrezPeca peca) {
