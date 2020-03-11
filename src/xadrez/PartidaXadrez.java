@@ -28,8 +28,20 @@ public class PartidaXadrez {
 	}
 	
 	private void inicioPartida() {
-		localNovaPeca('b', 6, new Torre(tabuleiro, CorPecas.BRANCO));
-		localNovaPeca('e', 8, new Rei(tabuleiro, CorPecas.PRETO));
-		localNovaPeca('e', 1, new Rei(tabuleiro, CorPecas.BRANCO));
+		localNovaPeca('c', 1, new Torre(tabuleiro, CorPecas.BRANCO));
+        localNovaPeca('c', 2, new Torre(tabuleiro, CorPecas.BRANCO));
+        localNovaPeca('d', 2, new Torre(tabuleiro, CorPecas.BRANCO));
+        localNovaPeca('e', 2, new Torre(tabuleiro, CorPecas.BRANCO));
+        localNovaPeca('e', 1, new Torre(tabuleiro, CorPecas.BRANCO));
+        localNovaPeca('d', 1, new Rei(tabuleiro, CorPecas.BRANCO));
+
+        localNovaPeca('c', 7, new Torre(tabuleiro, CorPecas.PRETO));
+        localNovaPeca('c', 8, new Torre(tabuleiro, CorPecas.PRETO));
+        localNovaPeca('d', 7, new Torre(tabuleiro, CorPecas.PRETO));
+        localNovaPeca('e', 7, new Torre(tabuleiro, CorPecas.PRETO));
+        localNovaPeca('e', 8, new Torre(tabuleiro, CorPecas.PRETO));
+        localNovaPeca('d', 8, new Rei(tabuleiro, CorPecas.PRETO));
+	
+	
 	}
 }
