@@ -4,5 +4,4 @@ public enum CorPecas {
 	
 	PRETO,
 	BRANCO
-
 }
