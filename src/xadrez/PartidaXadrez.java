@@ -16,6 +16,7 @@ public class PartidaXadrez {
 	private CorPecas atualJogador;	
 	private Tabuleiro tabuleiro;
 	private boolean xeque;
+	private boolean xequeMate;
 	
 	private List<Peca> pecasTabuleiro = new ArrayList<>();
 	private List<Peca> pecasCapturadas = new ArrayList<>();
@@ -38,6 +39,10 @@ public class PartidaXadrez {
 	
 	public boolean getXeque() {
 		return xeque;
+	}
+	
+	public boolean getXequeMate() {
+		return xequeMate;
 	}
 	
 	public XadrezPeca[][] getPecas() {
@@ -70,7 +75,11 @@ public class PartidaXadrez {
 		
 		xeque = (testeXeque(corOponente(atualJogador))) ? true  : false;
 		
-		proximoTurno();
+		if (testeXequeMate(corOponente(atualJogador))) {
+			xequeMate = true;
+		} else {
+			proximoTurno();
+		}
 		return (XadrezPeca) capturarPeca;
 	}
 	
@@ -146,12 +155,38 @@ public class PartidaXadrez {
 		return false;
 	}
 	
+	private boolean testeXequeMate(CorPecas corPecas) {
+		if (!testeXeque(corPecas)) {
+			return false;
+		}
+		List<Peca> list = pecasTabuleiro.stream().filter(x -> ((XadrezPeca)x).getCorPecas() == corPecas).collect(Collectors.toList());
+		for (Peca p : list) {
+			boolean[][] matriz = p.possiveisMovimentos();
+			for (int i=0; i<tabuleiro.getLinhas(); i++) {
+				for (int j=0; j<tabuleiro.getColunas(); j++) {
+					if (matriz[i][j]) {
+						Posicao origem = ((XadrezPeca)p).getPosicaoXadrez().toPosicao();
+						Posicao destino = new Posicao(i, j);
+						Peca capturarPeca = movimentoPeca(origem, destino);
+						boolean testeXeque = testeXeque(corPecas);
+						desfazerMovimento(origem, destino, capturarPeca);
+						if (!testeXeque) {
+							return false;
+						}
+					}
+				}
+			}
+		}
+		return true;
+	}
+	
 	private void localNovaPeca(char coluna, int linha, XadrezPeca peca) {
 		tabuleiro.localPeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
 		pecasTabuleiro.add(peca);
 	}
 	
 	private void inicioPartida() {
+		/*
 		localNovaPeca('c', 1, new Torre(tabuleiro, CorPecas.BRANCO));
         localNovaPeca('c', 2, new Torre(tabuleiro, CorPecas.BRANCO));
         localNovaPeca('d', 2, new Torre(tabuleiro, CorPecas.BRANCO));
@@ -165,5 +200,13 @@ public class PartidaXadrez {
         localNovaPeca('e', 7, new Torre(tabuleiro, CorPecas.PRETO));
         localNovaPeca('e', 8, new Torre(tabuleiro, CorPecas.PRETO));
         localNovaPeca('d', 8, new Rei(tabuleiro, CorPecas.PRETO));
+	*/
+		localNovaPeca('h', 7, new Torre(tabuleiro, CorPecas.BRANCO));
+        localNovaPeca('d', 1, new Torre(tabuleiro, CorPecas.BRANCO));
+        localNovaPeca('e', 1, new Rei(tabuleiro, CorPecas.BRANCO));
+        
+        localNovaPeca('b', 8, new Torre(tabuleiro, CorPecas.PRETO));
+        localNovaPeca('a', 8, new Rei(tabuleiro, CorPecas.PRETO));
+        
 	}
 }
