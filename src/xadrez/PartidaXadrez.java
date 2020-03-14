@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import tabuleiro.Peca;
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
+import xadrez.pecas.Peao;
 import xadrez.pecas.Rei;
 import xadrez.pecas.Torre;
 
@@ -188,27 +189,29 @@ public class PartidaXadrez {
 	}
 	
 	private void inicioPartida() {
-		/*
-		localNovaPeca('c', 1, new Torre(tabuleiro, CorPecas.BRANCO));
-        localNovaPeca('c', 2, new Torre(tabuleiro, CorPecas.BRANCO));
-        localNovaPeca('d', 2, new Torre(tabuleiro, CorPecas.BRANCO));
-        localNovaPeca('e', 2, new Torre(tabuleiro, CorPecas.BRANCO));
-        localNovaPeca('e', 1, new Torre(tabuleiro, CorPecas.BRANCO));
-        localNovaPeca('d', 1, new Rei(tabuleiro, CorPecas.BRANCO));
-
-        localNovaPeca('c', 7, new Torre(tabuleiro, CorPecas.PRETO));
-        localNovaPeca('c', 8, new Torre(tabuleiro, CorPecas.PRETO));
-        localNovaPeca('d', 7, new Torre(tabuleiro, CorPecas.PRETO));
-        localNovaPeca('e', 7, new Torre(tabuleiro, CorPecas.PRETO));
-        localNovaPeca('e', 8, new Torre(tabuleiro, CorPecas.PRETO));
-        localNovaPeca('d', 8, new Rei(tabuleiro, CorPecas.PRETO));
-		 */
-		localNovaPeca('h', 7, new Torre(tabuleiro, CorPecas.BRANCO));
-        localNovaPeca('d', 1, new Torre(tabuleiro, CorPecas.BRANCO));
+		
+		localNovaPeca('a', 1, new Torre(tabuleiro, CorPecas.BRANCO));
         localNovaPeca('e', 1, new Rei(tabuleiro, CorPecas.BRANCO));
+        localNovaPeca('h', 1, new Torre(tabuleiro, CorPecas.BRANCO));
+        localNovaPeca('a', 2, new Peao(tabuleiro, CorPecas.BRANCO));
+        localNovaPeca('b', 2, new Peao(tabuleiro, CorPecas.BRANCO));
+        localNovaPeca('c', 2, new Peao(tabuleiro, CorPecas.BRANCO));
+        localNovaPeca('d', 2, new Peao(tabuleiro, CorPecas.BRANCO));
+        localNovaPeca('e', 2, new Peao(tabuleiro, CorPecas.BRANCO));
+        localNovaPeca('f', 2, new Peao(tabuleiro, CorPecas.BRANCO));
+        localNovaPeca('g', 2, new Peao(tabuleiro, CorPecas.BRANCO));
+        localNovaPeca('h', 2, new Peao(tabuleiro, CorPecas.BRANCO));
         
-        localNovaPeca('b', 8, new Torre(tabuleiro, CorPecas.PRETO));
-        localNovaPeca('a', 8, new Rei(tabuleiro, CorPecas.PRETO));
-        
+        localNovaPeca('a', 8, new Torre(tabuleiro, CorPecas.PRETO));
+        localNovaPeca('e', 8, new Rei(tabuleiro, CorPecas.PRETO));
+        localNovaPeca('h', 8, new Torre(tabuleiro, CorPecas.PRETO));
+        localNovaPeca('a', 7, new Peao(tabuleiro, CorPecas.PRETO));
+        localNovaPeca('b', 7, new Peao(tabuleiro, CorPecas.PRETO));
+        localNovaPeca('c', 7, new Peao(tabuleiro, CorPecas.PRETO));
+        localNovaPeca('d', 7, new Peao(tabuleiro, CorPecas.PRETO));
+        localNovaPeca('e', 7, new Peao(tabuleiro, CorPecas.PRETO));
+        localNovaPeca('f', 7, new Peao(tabuleiro, CorPecas.PRETO));
+        localNovaPeca('g', 7, new Peao(tabuleiro, CorPecas.PRETO));
+        localNovaPeca('h', 7, new Peao(tabuleiro, CorPecas.PRETO));
 	}
 }
