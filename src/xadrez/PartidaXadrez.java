@@ -84,7 +84,8 @@ public class PartidaXadrez {
 	}
 	
 	private Peca movimentoPeca(Posicao origem, Posicao destino) {
-		Peca p = tabuleiro.removePeca(origem);
+		XadrezPeca p = (XadrezPeca)tabuleiro.removePeca(origem);
+		p.incrementarMovimentos();
 		Peca capturarPeca = tabuleiro.removePeca(destino);
 		tabuleiro.localPeca(p, destino);
 		
@@ -96,7 +97,8 @@ public class PartidaXadrez {
 	}
 	
 	private void desfazerMovimento(Posicao origem, Posicao destino, Peca capturarPeca) {
-		Peca p = tabuleiro.removePeca(destino);
+		XadrezPeca p = (XadrezPeca)tabuleiro.removePeca(destino);
+		p.decrementarMovimentos();
 		tabuleiro.localPeca(p, origem);
 		
 		if (capturarPeca != null) {
@@ -200,7 +202,7 @@ public class PartidaXadrez {
         localNovaPeca('e', 7, new Torre(tabuleiro, CorPecas.PRETO));
         localNovaPeca('e', 8, new Torre(tabuleiro, CorPecas.PRETO));
         localNovaPeca('d', 8, new Rei(tabuleiro, CorPecas.PRETO));
-	*/
+		 */
 		localNovaPeca('h', 7, new Torre(tabuleiro, CorPecas.BRANCO));
         localNovaPeca('d', 1, new Torre(tabuleiro, CorPecas.BRANCO));
         localNovaPeca('e', 1, new Rei(tabuleiro, CorPecas.BRANCO));
